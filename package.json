@@ -2,6 +2,9 @@
   "name": "dio_workshop_github_copilot",
   "version": "1.0.0",
   "description": "Repositório para o Bootcamp GitHub Copilot na DIO - by Pachi Parra",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
