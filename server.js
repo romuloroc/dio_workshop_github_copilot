@@ -83,7 +83,7 @@ app.post('/api/tasks', (req, res) => {
     id: nextId++,
     title,
     description: description || '',
-    completed: completed !== undefined ? completed : false
+    completed: completed ?? false
   };
   
   tasks.push(newTask);
@@ -170,7 +170,13 @@ app.use((req, res) => {
 
 // Error handler
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  // Only log stack traces in development
+  if (process.env.NODE_ENV === 'development') {
+    console.error(err.stack);
+  } else {
+    console.error('Error:', err.message);
+  }
+  
   res.status(500).json({
     success: false,
     message: 'Internal server error',
