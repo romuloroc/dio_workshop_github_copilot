@@ -52,6 +52,11 @@ app.get('/initiatives', (req, res) => {
 
 app.get('/initiatives/:id', (req, res) => {
   const id = parseInt(req.params.id);
+  
+  if (isNaN(id)) {
+    return res.status(400).json({ error: 'ID inválido' });
+  }
+  
   const initiative = initiatives.find(i => i.id === id);
   
   if (!initiative) {
@@ -83,6 +88,11 @@ app.post('/initiatives', (req, res) => {
 
 app.put('/initiatives/:id', (req, res) => {
   const id = parseInt(req.params.id);
+  
+  if (isNaN(id)) {
+    return res.status(400).json({ error: 'ID inválido' });
+  }
+  
   const index = initiatives.findIndex(i => i.id === id);
   
   if (index === -1) {
@@ -105,6 +115,11 @@ app.put('/initiatives/:id', (req, res) => {
 
 app.delete('/initiatives/:id', (req, res) => {
   const id = parseInt(req.params.id);
+  
+  if (isNaN(id)) {
+    return res.status(400).json({ error: 'ID inválido' });
+  }
+  
   const index = initiatives.findIndex(i => i.id === id);
   
   if (index === -1) {
